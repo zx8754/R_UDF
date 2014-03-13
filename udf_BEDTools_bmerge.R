@@ -2,6 +2,8 @@ udf_BEDTools_bmerge <-
   function(bed1,
            bmerge="/bedtools2-2.19.1/bin/mergeBed",
            opt.string="-s"){
+    #Adapted from Altuna Akalin's blog at http://zvfak.blogspot.co.uk/2011/02/calling-bedtools-from-r.html
+    #
     #bed1 - data.frame sorted by chrom and start.
     #       If opt.string="-s", then data.frame must be in BED6 format:
     #             chrom, start, end, name, score, and strand.
