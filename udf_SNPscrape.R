@@ -42,7 +42,7 @@ udf_SNPscrape <- function(fileName="SNP_Tables.xlsx",
   # Scrape SNPs -------------------------------------------------------------
   # split by "/|,|\\s|\\*", this might need updating depending on ugliness of
   # input SNP tables.
-  dat <- unique(unlist(strsplit(dat,"/|,|\\s|\\*")))
+  dat <- unique(unlist(strsplit(dat,"/|,|\\s|\\*|\\(|\\)")))
   #scrape using regex: rs123, chr1:123:I, chr1:123:D
   dat <- dat[grepl("rs[0-9]{1,}$|chr[0-9]{1,2}:[0-9]*:[I|D]$",dat)]
   output <- sort(unique(dat))
