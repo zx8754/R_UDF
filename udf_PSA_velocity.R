@@ -12,6 +12,13 @@ udf_PSA_velocity <- function(dat) {
   # Methods of calculating prostate-specific antigen velocity.
   # Connolly D1, Black A, Murray LJ, Napolitano G, Gavin A, Keane PF.
   
+  # Input data.frame format:
+  # SampleName   PSA_Date PSA
+  # Sample_1 18/07/2011 4.2
+  # Sample_2 18/04/2008 2.2
+  # Sample_2 08/05/2009 2.8
+  # Sample_2 07/04/2010 3.3
+  
   # Workspace ---------------------------------------------------------------
   #setwd("C:/Users/tdadaev/Desktop/Projects/Impact/PSAvelocity/R")
   date_prefix <- substr(Sys.time(),1,10)
