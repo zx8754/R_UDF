@@ -66,7 +66,7 @@ udf_PSA_velocity <- function(dat) {
                   (d[nrow(d),"PSA"]-d[1,"PSA"]) / 
                   as.numeric(diff.Date(c(d[1,"PSADate"],d[nrow(d),"PSADate"])))
                 
-              }else{#if there is only PSA then velocity=NA
+              }else{#if there is only one PSA then velocity=NA
                 PSAV_a=NA
                 PSAV_b=NA
                 PSAV_c=NA}
