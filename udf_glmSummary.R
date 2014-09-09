@@ -37,6 +37,6 @@ udf_glmSummary <- function(model, Description=NA, Summary=FALSE)
       stringsAsFactors=F)
   }
   #if description is NA then exclude
-  result <- ifelse(is.na(Description),result[,-match("Description",colnames(x))],result)
+  result <- ifelse(is.na(Description),result[,-match("Description",colnames(result))],result)
   return(result)
 }
