@@ -36,5 +36,7 @@ udf_glmSummary <- function(model, Description=NA, Summary=FALSE)
       cbind(Description, coeffs),
       stringsAsFactors=F)
   }
+  #if description is NA then exclude
+  result <- ifelse(is.na(Description),result[,-match("Description",colnames(x))],result)
   return(result)
 }
