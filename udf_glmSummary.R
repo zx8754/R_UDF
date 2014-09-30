@@ -23,12 +23,11 @@ udf_glmSummary <- function(model, Description=NA, Summary=FALSE)
   #output as data.frame
   if(Summary)
   {
-    result <- as.data.frame(
-      cbind(Description, coeffs$P, paste0(coeffs$OR," (", coeffs$Lo.CI,"-", coeffs$Up.CI,")")),
-      stringsAsFactors=F)
-    #exclude intercept
-    result <- result[-1,]
-    colnames(result) <- c("Description","P","OR (CI.95)")
+    result <- data.frame(
+      Description=Description,
+      P=coeffs$P,
+      OR=paste0(coeffs$OR," (", coeffs$Lo.CI,"-", coeffs$Up.CI,")"))
+    colnames(result)[3] <- "OR (CI.95)"
     row.names(result)<-NULL
   } else 
   {
