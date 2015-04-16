@@ -45,7 +45,8 @@ udf_impute2mach <- function(inFile=NA, outFolder=NA)
                        d <- unlist(strsplit(x," "))
                        d <- as.numeric(d[6:length(d)])
                        sapply(seq(1,length(d),3),function(i)
-                         d[i+1]*1 + d[i+2]*2)
+                         # Minor allele count (AA*0+AB*1+BB*2) is same as (AB + BB*2)
+                         d[i+1] + d[i+2]*2)
                      }))
     
     #output dosage file
