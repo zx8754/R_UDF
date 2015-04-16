@@ -38,7 +38,7 @@ udf_impute2mach <- function(inFile="temp.txt",
                        d <- unlist(strsplit(x," "))
                        d <- as.numeric(d[6:length(d)])
                        sapply(seq(1,length(d),3),function(i)
-                         d[i]*0 + d[i+1]*1 + d[i+2]*2)
+                         d[i+1]*1 + d[i+2]*2)
                      }))
     
     #output dosage file
