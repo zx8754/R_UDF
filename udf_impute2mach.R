@@ -1,10 +1,17 @@
-udf_impute2mach <- function(inFile="temp.txt",
-                            outFolder="R_output/")
+udf_impute2mach <- function(inFile=NA, outFolder=NA)
 {
+  # Check input -------------------------------------------------------------
+  if(is.na(inFile)) stop("No input file!")
+  if(!file.exists(inFile)) stop("Input file doesn't exist!")
+  if(is.na(outFolder)) {
+    outFolder <- getwd()
+    warning("Output folder is set to working directory - getwd()")
+    }
+
   # Workspace ---------------------------------------------------------------
   
-  outFileMAP=paste0(outFolder,basename(inFile),".map")
-  outFileDOSE=paste0(outFolder,basename(inFile),".dose")
+  outFileMAP=paste0(outFolder,"/",basename(inFile),".map")
+  outFileDOSE=paste0(outFolder,"/",basename(inFile),".dose")
   
   #read Impute2 output
   dat <- readLines(inFile)
@@ -20,14 +27,14 @@ udf_impute2mach <- function(inFile="temp.txt",
   write.table(MAP,outFileMAP,quote=FALSE,row.names=FALSE,col.names=FALSE)
   
   # Make DOSE file ----------------------------------------------------------
-  #write in chunks - append to file every chunk
+  #write in chunks to avoid filling up memory - append to file every chunk
   chunk=1000
   for(i in seq(1,length(dat),chunk)){
-    colStart <- i
-    colEnd <- ifelse(colStart+chunk-1 > length(dat),
+    ixStart <- i
+    ixEnd <- ifelse(ixStart+chunk-1 > length(dat),
                      length(dat),
-                     colStart+chunk-1)
-    d_chunk <- dat[colStart:colEnd]
+                     ixStart+chunk-1)
+    d_chunk <- dat[ixStart:ixEnd]
     
     #make dosage and write with append
     DOSE <-
