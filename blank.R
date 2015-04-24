@@ -2,8 +2,7 @@
 # Date: //2015
 
 # Workspace ---------------------------------------------------------------
-require(dplyr)
-# require(data.table)
+library(dplyr)
 # load()
 # setwd()
 
