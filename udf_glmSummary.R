@@ -14,7 +14,8 @@ udf_glmSummary <- function(model, Description=NA, Summary=FALSE)
   
   coefColNames <- colnames(coeffs)
   colnames(coeffs) <- c("Est","SE",
-                        toupper(substr(coefColNames[grepl("value",coefColNames)],1,1)),
+                        #toupper(substr(coefColNames[grepl("value",coefColNames)],1,1)),
+                        "TZ",
                         "P","OR","Lo.CI","Up.CI")
   
   coeffs[,c(1,2,3)] <- round(coeffs[,c(1,2,3)],2)
